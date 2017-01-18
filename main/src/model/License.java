@@ -11,6 +11,13 @@ public class License {
     protected Timestamp dateOfIssue;
     protected Timestamp expirationDate;
 
+    public License(String id, String number, Timestamp dateOfIssue, Timestamp expirationDate) {
+        this.id = id;
+        this.number = number;
+        this.dateOfIssue = dateOfIssue;
+        this.expirationDate = expirationDate;
+    }
+
     public String getId() {
         return id;
     }

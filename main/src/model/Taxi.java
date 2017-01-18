@@ -12,6 +12,15 @@ public class Taxi extends Vehicle {
     protected Timestamp purchaseDate;
     protected Service service;
 
+    public Taxi(String id, String numberPlate, Person owner, String insuranceNumber, String insurance, String brand, String type, String number, Milage milage, String yearOfConstruction, Timestamp purchaseDate, Service service) {
+        super(id, numberPlate, owner, insuranceNumber, insurance, brand, type);
+        this.number = number;
+        this.milage = milage;
+        this.yearOfConstruction = yearOfConstruction;
+        this.purchaseDate = purchaseDate;
+        this.service = service;
+    }
+
     public String getNumber() {
         return number;
     }

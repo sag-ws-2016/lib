@@ -13,6 +13,15 @@ public class Contract {
     protected Timestamp startDate;
     protected Timestamp endDate;
 
+    public Contract(String id, double earnings, int hoursOfWork, int daysOfHoliday, Timestamp startDate, Timestamp endDate) {
+        this.id = id;
+        this.earnings = earnings;
+        this.hoursOfWork = hoursOfWork;
+        this.daysOfHoliday = daysOfHoliday;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public String getId() {
         return id;
     }

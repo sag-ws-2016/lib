@@ -12,6 +12,16 @@ public class Person {
     protected String placeOfBirth;
     protected String dateOfBirth;
 
+    public Person(String id, String firstName, String lastName, Address address, String phoneNumber, String placeOfBirth, String dateOfBirth) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.placeOfBirth = placeOfBirth;
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public String getFirstName() {
         return firstName;
     }

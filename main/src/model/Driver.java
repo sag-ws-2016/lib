@@ -18,6 +18,21 @@ public class Driver extends Person {
     protected Timestamp employmentDate;
     protected Timestamp addedDate;
 
+    public Driver(String id, String firstName, String lastName, Address address, String phoneNumber, String placeOfBirth, String dateOfBirth, String nationality, String socialSecurityNumber, String taxIdentificationNumber, String taxClass, String healthInsuranceNumber, String pin, Contract contract, DrivingLicense drivingLicense, PassengerTransportLicense passengerTransportLicense, Timestamp employmentDate, Timestamp addedDate) {
+        super(id, firstName, lastName, address, phoneNumber, placeOfBirth, dateOfBirth);
+        this.nationality = nationality;
+        this.socialSecurityNumber = socialSecurityNumber;
+        this.taxIdentificationNumber = taxIdentificationNumber;
+        this.taxClass = taxClass;
+        this.healthInsuranceNumber = healthInsuranceNumber;
+        this.pin = pin;
+        this.contract = contract;
+        this.drivingLicense = drivingLicense;
+        this.passengerTransportLicense = passengerTransportLicense;
+        this.employmentDate = employmentDate;
+        this.addedDate = addedDate;
+    }
+
     public String getNationality() {
         return nationality;
     }

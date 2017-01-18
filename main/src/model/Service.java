@@ -13,6 +13,15 @@ public class Service {
     protected int mileage;
     protected double costs;
 
+    public Service(String id, Timestamp date, String title, String reasonForService, int mileage, double costs) {
+        this.id = id;
+        this.date = date;
+        this.title = title;
+        this.reasonForService = reasonForService;
+        this.mileage = mileage;
+        this.costs = costs;
+    }
+
     public String getId() {
         return id;
     }
