@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 import java.sql.Timestamp;
 
@@ -11,6 +11,9 @@ public class Taxi extends Vehicle {
     protected String yearOfConstruction;
     protected Timestamp purchaseDate;
     protected Service service;
+
+    public Taxi() {
+    }
 
     public Taxi(String id, String numberPlate, Person owner, String insuranceNumber, String insurance, String brand, String type, String number, Milage milage, String yearOfConstruction, Timestamp purchaseDate, Service service) {
         super(id, numberPlate, owner, insuranceNumber, insurance, brand, type);

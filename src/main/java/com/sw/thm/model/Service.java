@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 import java.sql.Timestamp;
 
@@ -12,6 +12,9 @@ public class Service {
     protected String reasonForService;
     protected int mileage;
     protected double costs;
+
+    public Service() {
+    }
 
     public Service(String id, Timestamp date, String title, String reasonForService, int mileage, double costs) {
         this.id = id;

@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 /**
  * Created by jonas on 18.01.17.
@@ -11,6 +11,9 @@ public class Person {
     protected String phoneNumber;
     protected String placeOfBirth;
     protected String dateOfBirth;
+
+    public Person() {
+    }
 
     public Person(String id, String firstName, String lastName, Address address, String phoneNumber, String placeOfBirth, String dateOfBirth) {
         this.id = id;

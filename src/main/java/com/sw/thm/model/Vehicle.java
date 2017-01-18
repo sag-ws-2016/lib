@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 /**
  * Created by Christoph on 18.01.2017.
@@ -11,6 +11,9 @@ public class Vehicle {
     protected String insurance;
     protected String brand;
     protected String type;
+
+    public Vehicle() {
+    }
 
     public Vehicle(String id, String numberPlate, Person owner, String insuranceNumber, String insurance, String brand, String type) {
         this.id = id;

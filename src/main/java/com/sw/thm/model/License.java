@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 import java.sql.Timestamp;
 
@@ -10,6 +10,9 @@ public class License {
     protected String number;
     protected Timestamp dateOfIssue;
     protected Timestamp expirationDate;
+
+    public License() {
+    }
 
     public License(String id, String number, Timestamp dateOfIssue, Timestamp expirationDate) {
         this.id = id;

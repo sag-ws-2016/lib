@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 import java.util.LinkedList;
 
@@ -8,6 +8,9 @@ import java.util.LinkedList;
 public class ContractTemplate {
     protected String title;
     protected LinkedList sections;
+
+    public ContractTemplate() {
+    }
 
     public ContractTemplate(String title, LinkedList sections) {
         this.title = title;

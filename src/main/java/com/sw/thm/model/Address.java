@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 /**
  * Created by jonas on 18.01.17.
@@ -10,6 +10,9 @@ public class Address {
     protected String zip;
     protected String country;
     protected String careOf;
+
+    public Address() {
+    }
 
     public Address(String street, String houseNumber, String city, String zip, String country, String careOf, String id) {
         this.street = street;

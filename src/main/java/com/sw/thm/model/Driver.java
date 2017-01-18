@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 import java.sql.Timestamp;
 
@@ -17,6 +17,9 @@ public class Driver extends Person {
     protected PassengerTransportLicense passengerTransportLicense;
     protected Timestamp employmentDate;
     protected Timestamp addedDate;
+
+    public Driver() {
+    }
 
     public Driver(String id, String firstName, String lastName, Address address, String phoneNumber, String placeOfBirth, String dateOfBirth, String nationality, String socialSecurityNumber, String taxIdentificationNumber, String taxClass, String healthInsuranceNumber, String pin, Contract contract, DrivingLicense drivingLicense, PassengerTransportLicense passengerTransportLicense, Timestamp employmentDate, Timestamp addedDate) {
         super(id, firstName, lastName, address, phoneNumber, placeOfBirth, dateOfBirth);
