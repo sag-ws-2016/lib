@@ -6,6 +6,13 @@ import java.sql.Timestamp;
  * Created by jonas on 18.01.17.
  */
 public class Contract {
+    protected String id;
+    protected double earnings;
+    protected int hoursOfWork;
+    protected int daysOfHoliday;
+    protected Timestamp startDate;
+    protected Timestamp endDate;
+
     public String getId() {
         return id;
     }
@@ -61,11 +68,4 @@ public class Contract {
             return false;
         }
     }
-
-    protected String id;
-    protected double earnings;
-    protected int hoursOfWork;
-    protected int daysOfHoliday;
-    protected Timestamp startDate;
-    protected Timestamp endDate;
 }

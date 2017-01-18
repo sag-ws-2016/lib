@@ -4,6 +4,14 @@ package model;
  * Created by jonas on 18.01.17.
  */
 public class Person {
+    protected String id;
+    protected String firstName;
+    protected String lastName;
+    protected Address address;
+    protected String phoneNumber;
+    protected String placeOfBirth;
+    protected String dateOfBirth;
+
     public String getFirstName() {
         return firstName;
     }
@@ -59,12 +67,4 @@ public class Person {
     public void setId(String id) {
         this.id = id;
     }
-
-    protected String id;
-    protected String firstName;
-    protected String lastName;
-    protected Address address;
-    protected String phoneNumber;
-    protected String placeOfBirth;
-    protected String dateOfBirth;
 }
