@@ -13,6 +13,10 @@ public class Driver extends Person {
     protected String healthInsuranceNumber;
     protected String pin;
     protected Contract contract;
+    protected DrivingLicense drivingLicense;
+    protected PassengerTransportLicense passengerTransportLicense;
+    protected Timestamp employmentDate;
+    protected Timestamp addedDate;
 
     public String getNationality() {
         return nationality;
@@ -102,8 +106,5 @@ public class Driver extends Person {
         this.addedDate = addedDate;
     }
 
-    protected DrivingLicense drivingLicense;
-    protected PassengerTransportLicense passengerTransportLicense;
-    protected Timestamp employmentDate;
-    protected Timestamp addedDate;
+
 }

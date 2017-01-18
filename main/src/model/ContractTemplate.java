@@ -6,6 +6,9 @@ import java.util.LinkedList;
  * Created by jonas on 18.01.17.
  */
 public class ContractTemplate {
+    protected String title;
+    protected LinkedList sections;
+
     public String getTitle() {
         return title;
     }
@@ -22,6 +25,4 @@ public class ContractTemplate {
         this.sections = sections;
     }
 
-    protected String title;
-    protected LinkedList sections;
 }

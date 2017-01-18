@@ -6,6 +6,11 @@ import java.sql.Timestamp;
  * Created by jonas on 18.01.17.
  */
 public class License {
+    protected String id;
+    protected String number;
+    protected Timestamp dateOfIssue;
+    protected Timestamp expirationDate;
+
     public String getId() {
         return id;
     }
@@ -38,8 +43,4 @@ public class License {
         this.expirationDate = expirationDate;
     }
 
-    protected String id;
-    protected String number;
-    protected Timestamp dateOfIssue;
-    protected Timestamp expirationDate;
 }

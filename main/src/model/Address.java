@@ -4,7 +4,12 @@ package model;
  * Created by jonas on 18.01.17.
  */
 public class Address {
-    String street;
+    protected String street;
+    protected String houseNumber;
+    protected String city;
+    protected String zip;
+    protected String country;
+    protected String careOf;
 
     public String getStreet() {
         return street;
@@ -63,9 +68,4 @@ public class Address {
         this.id = id;
     }
 
-    protected String houseNumber;
-    protected String city;
-    protected String zip;
-    protected String country;
-    protected String careOf;
 }
