@@ -9,6 +9,11 @@ public class ContractTemplate {
     protected String title;
     protected LinkedList sections;
 
+    public ContractTemplate(String title, LinkedList sections) {
+        this.title = title;
+        this.sections = sections;
+    }
+
     public String getTitle() {
         return title;
     }

@@ -11,6 +11,16 @@ public class Address {
     protected String country;
     protected String careOf;
 
+    public Address(String street, String houseNumber, String city, String zip, String country, String careOf, String id) {
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.city = city;
+        this.zip = zip;
+        this.country = country;
+        this.careOf = careOf;
+        this.id = id;
+    }
+
     public String getStreet() {
         return street;
     }

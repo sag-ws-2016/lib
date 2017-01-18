@@ -12,6 +12,16 @@ public class Vehicle {
     protected String brand;
     protected String type;
 
+    public Vehicle(String id, String numberPlate, Person owner, String insuranceNumber, String insurance, String brand, String type) {
+        this.id = id;
+        this.numberPlate = numberPlate;
+        this.owner = owner;
+        this.insuranceNumber = insuranceNumber;
+        this.insurance = insurance;
+        this.brand = brand;
+        this.type = type;
+    }
+
     public String getId() {
         return id;
     }
