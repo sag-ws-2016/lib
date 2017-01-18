@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 import java.sql.Timestamp;
 
@@ -7,6 +7,9 @@ import java.sql.Timestamp;
  */
 public class DrivingLicense extends License {
     protected String licenseClass;
+
+    public DrivingLicense() {
+    }
 
     public DrivingLicense(String id, String number, Timestamp dateOfIssue, Timestamp expirationDate, String licenseClass) {
         super(id, number, dateOfIssue, expirationDate);

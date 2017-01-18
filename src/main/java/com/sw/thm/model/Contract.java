@@ -1,4 +1,4 @@
-package model;
+package com.sw.thm.model;
 
 import java.sql.Timestamp;
 
@@ -12,6 +12,9 @@ public class Contract {
     protected int daysOfHoliday;
     protected Timestamp startDate;
     protected Timestamp endDate;
+
+    public Contract() {
+    }
 
     public Contract(String id, double earnings, int hoursOfWork, int daysOfHoliday, Timestamp startDate, Timestamp endDate) {
         this.id = id;
