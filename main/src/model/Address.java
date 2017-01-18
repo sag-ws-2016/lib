@@ -53,10 +53,19 @@ public class Address {
     public void setCareOf(String careOf) {
         this.careOf = careOf;
     }
+    protected String id;
 
-    String houseNumber;
-    String city;
-    String zip;
-    String country;
-    String careOf;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    protected String houseNumber;
+    protected String city;
+    protected String zip;
+    protected String country;
+    protected String careOf;
 }
