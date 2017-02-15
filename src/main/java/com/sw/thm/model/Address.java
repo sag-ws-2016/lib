@@ -1,9 +1,11 @@
 package com.sw.thm.model;
 
+import java.io.Serializable;
+
 /**
  * Created by jonas on 18.01.17.
  */
-public class Address {
+public class Address implements Serializable{
     protected String street;
     protected String houseNumber;
     protected String city;

@@ -1,11 +1,12 @@
 package com.sw.thm.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * Created by jonas on 18.01.17.
  */
-public class ContractTemplate {
+public class ContractTemplate implements Serializable{
     protected String title;
     protected LinkedList sections;
 

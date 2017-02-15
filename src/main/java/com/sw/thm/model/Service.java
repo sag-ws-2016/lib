@@ -1,11 +1,12 @@
 package com.sw.thm.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Christoph on 18.01.2017.
  */
-public class Service {
+public class Service implements Serializable{
     protected String id;
     protected Timestamp date;
     protected String title;

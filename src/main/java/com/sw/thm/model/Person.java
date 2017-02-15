@@ -1,9 +1,11 @@
 package com.sw.thm.model;
 
+import java.io.Serializable;
+
 /**
  * Created by jonas on 18.01.17.
  */
-public class Person {
+public class Person implements Serializable{
     protected String id;
     protected String firstName;
     protected String lastName;

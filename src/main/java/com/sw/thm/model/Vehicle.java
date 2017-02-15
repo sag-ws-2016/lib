@@ -1,9 +1,11 @@
 package com.sw.thm.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Christoph on 18.01.2017.
  */
-public class Vehicle {
+public class Vehicle implements Serializable{
     protected String id;
     protected String numberPlate;
     protected Person owner;
