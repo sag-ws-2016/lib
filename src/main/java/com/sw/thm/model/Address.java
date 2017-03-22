@@ -1,11 +1,18 @@
 package com.sw.thm.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
+
 
 /**
  * Created by jonas on 18.01.17.
  */
+@Entity
+@Table( name = "ADDRESS" )
 public class Address implements Serializable{
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    protected String id;
     protected String street;
     protected String houseNumber;
     protected String city;
@@ -73,7 +80,6 @@ public class Address implements Serializable{
     public void setCareOf(String careOf) {
         this.careOf = careOf;
     }
-    protected String id;
 
     public String getId() {
         return id;

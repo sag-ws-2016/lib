@@ -8,3 +8,7 @@ targetCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+
+dependencies {
+    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
+}
