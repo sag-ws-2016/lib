@@ -1,6 +1,6 @@
 package com.sw.thm.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Christoph on 18.01.2017.
@@ -9,13 +9,13 @@ public class Taxi extends Vehicle {
     protected String number;
     protected Milage milage;
     protected String yearOfConstruction;
-    protected Timestamp purchaseDate;
+    protected Date purchaseDate;
     protected Service service;
 
     public Taxi() {
     }
 
-    public Taxi(String id, String numberPlate, Person owner, String insuranceNumber, String insurance, String brand, String type, String number, Milage milage, String yearOfConstruction, Timestamp purchaseDate, Service service) {
+    public Taxi(String id, String numberPlate, Person owner, String insuranceNumber, String insurance, String brand, String type, String number, Milage milage, String yearOfConstruction, Date purchaseDate, Service service) {
         super(id, numberPlate, owner, insuranceNumber, insurance, brand, type);
         this.number = number;
         this.milage = milage;
@@ -48,11 +48,11 @@ public class Taxi extends Vehicle {
         this.yearOfConstruction = yearOfConstruction;
     }
 
-    public Timestamp getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Timestamp purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
@@ -66,7 +66,7 @@ public class Taxi extends Vehicle {
 
     class Milage {
         protected int value;
-        protected Timestamp date;
+        protected Date date;
 
         public int getValue() {
             return value;
@@ -76,11 +76,11 @@ public class Taxi extends Vehicle {
             this.value = value;
         }
 
-        public Timestamp getDate() {
+        public Date getDate() {
             return date;
         }
 
-        public void setDate(Timestamp date) {
+        public void setDate(Date date) {
             this.date = date;
         }
     }

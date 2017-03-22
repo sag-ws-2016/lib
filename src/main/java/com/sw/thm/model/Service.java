@@ -1,14 +1,14 @@
 package com.sw.thm.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Christoph on 18.01.2017.
  */
 public class Service implements Serializable{
     protected String id;
-    protected Timestamp date;
+    protected Date date;
     protected String title;
     protected String reasonForService;
     protected int mileage;
@@ -17,7 +17,7 @@ public class Service implements Serializable{
     public Service() {
     }
 
-    public Service(String id, Timestamp date, String title, String reasonForService, int mileage, double costs) {
+    public Service(String id, Date date, String title, String reasonForService, int mileage, double costs) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -34,11 +34,11 @@ public class Service implements Serializable{
         this.id = id;
     }
 
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
