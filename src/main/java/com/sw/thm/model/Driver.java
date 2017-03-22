@@ -1,6 +1,6 @@
 package com.sw.thm.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by jonas on 18.01.17.
@@ -15,13 +15,13 @@ public class Driver extends Person {
     protected Contract contract;
     protected DrivingLicense drivingLicense;
     protected PassengerTransportLicense passengerTransportLicense;
-    protected Timestamp employmentDate;
-    protected Timestamp addedDate;
+    protected Date employmentDate;
+    protected Date addedDate;
 
     public Driver() {
     }
 
-    public Driver(String id, String firstName, String lastName, Address address, String phoneNumber, String placeOfBirth, String dateOfBirth, String nationality, String socialSecurityNumber, String taxIdentificationNumber, String taxClass, String healthInsuranceNumber, String pin, Contract contract, DrivingLicense drivingLicense, PassengerTransportLicense passengerTransportLicense, Timestamp employmentDate, Timestamp addedDate) {
+    public Driver(String id, String firstName, String lastName, Address address, String phoneNumber, String placeOfBirth, String dateOfBirth, String nationality, String socialSecurityNumber, String taxIdentificationNumber, String taxClass, String healthInsuranceNumber, String pin, Contract contract, DrivingLicense drivingLicense, PassengerTransportLicense passengerTransportLicense, Date employmentDate, Date addedDate) {
         super(id, firstName, lastName, address, phoneNumber, placeOfBirth, dateOfBirth);
         this.nationality = nationality;
         this.socialSecurityNumber = socialSecurityNumber;
@@ -108,19 +108,19 @@ public class Driver extends Person {
         this.passengerTransportLicense = passengerTransportLicense;
     }
 
-    public Timestamp getEmploymentDate() {
+    public Date getEmploymentDate() {
         return employmentDate;
     }
 
-    public void setEmploymentDate(Timestamp employmentDate) {
+    public void setEmploymentDate(Date employmentDate) {
         this.employmentDate = employmentDate;
     }
 
-    public Timestamp getAddedDate() {
+    public Date getAddedDate() {
         return addedDate;
     }
 
-    public void setAddedDate(Timestamp addedDate) {
+    public void setAddedDate(Date addedDate) {
         this.addedDate = addedDate;
     }
 

@@ -1,7 +1,7 @@
 package com.sw.thm.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by jonas on 18.01.17.
@@ -11,13 +11,13 @@ public class Contract implements Serializable{
     protected double earnings;
     protected int hoursOfWork;
     protected int daysOfHoliday;
-    protected Timestamp startDate;
-    protected Timestamp endDate;
+    protected Date startDate;
+    protected Date endDate;
 
     public Contract() {
     }
 
-    public Contract(String id, double earnings, int hoursOfWork, int daysOfHoliday, Timestamp startDate, Timestamp endDate) {
+    public Contract(String id, double earnings, int hoursOfWork, int daysOfHoliday, Date startDate, Date endDate) {
         this.id = id;
         this.earnings = earnings;
         this.hoursOfWork = hoursOfWork;
@@ -58,19 +58,19 @@ public class Contract implements Serializable{
         this.daysOfHoliday = daysOfHoliday;
     }
 
-    public Timestamp getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Timestamp startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Timestamp getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Timestamp endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
