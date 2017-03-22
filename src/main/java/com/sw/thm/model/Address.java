@@ -1,5 +1,7 @@
 package com.sw.thm.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -11,7 +13,8 @@ import javax.persistence.*;
 @Table( name = "ADDRESS" )
 public class Address implements Serializable{
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name="uuid", strategy="uuid2")
     protected String id;
     protected String street;
     protected String houseNumber;
