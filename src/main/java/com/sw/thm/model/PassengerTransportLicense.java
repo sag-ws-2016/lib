@@ -1,8 +1,8 @@
 package com.sw.thm.model;
 
-/**
- * Created by jonas on 18.01.17.
- */
+import lombok.Data;
+
+@Data
 public class PassengerTransportLicense extends License {
     public PassengerTransportLicense() {
     }

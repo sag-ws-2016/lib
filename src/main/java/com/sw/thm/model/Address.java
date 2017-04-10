@@ -6,10 +6,6 @@ import org.hibernate.annotations.GenericGenerator;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
-/**
- * Created by jonas on 18.01.17.
- */
 @Entity
 @Table( name = "ADDRESS" )
 @Data
