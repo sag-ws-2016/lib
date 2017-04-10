@@ -1,9 +1,7 @@
 package com.sw.thm.model;
 
 import lombok.Data;
-
 import java.util.Date;
-
 @Data
 public class Driver extends Person {
     protected String nationality;
