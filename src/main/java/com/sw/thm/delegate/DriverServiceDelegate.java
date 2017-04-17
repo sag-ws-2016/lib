@@ -9,6 +9,18 @@ import java.util.List;
  * Created by christophcaps on 11.04.17.
  */
 public class DriverServiceDelegate implements DriverServiceInterface {
+
+    //Konstruktor Default
+    public DriverServiceDelegate() {
+        String connectionInformation = "http://driver-service.thm.de:8944/driver";
+    }
+
+    //Konstruktor mit Connectionstring
+    //Example für Connectionstring >>>
+    public DriverServiceDelegate(String connectionstring) {
+        String connectionInformation = connectionstring;
+    }
+
     @Override
     public void create(Driver driver) {
         System.out.println("POST + URL + Driver");
