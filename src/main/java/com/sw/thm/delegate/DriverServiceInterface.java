@@ -13,5 +13,6 @@ public interface DriverServiceInterface {
     void update(String id, Driver newDriver);
     Driver getByID(String id);
     List<Driver> getAll();
+    void delete (String id);
 }
 

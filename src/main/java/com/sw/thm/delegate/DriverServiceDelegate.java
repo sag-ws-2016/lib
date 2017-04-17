@@ -36,4 +36,14 @@ public class DriverServiceDelegate implements DriverServiceInterface {
         List<Driver> driverList = new ArrayList<Driver>();
         return driverList;
     }
+
+    @Override
+    public void delete(String id) {
+        System.out.println("Find DriverDatabaseModel by id");
+
+        System.out.println("if driver at id == null -> throw not found exception");
+
+        System.out.println("Remove address");
+        System.out.println("Remove driver");
+    }
 }
