@@ -34,6 +34,26 @@ public class DriverServiceDelegate implements DriverServiceInterface {
 
     @Override
     public void create(Driver driver) {
+        HttpClient client = null;
+        try {
+            client = new HttpClient(new URI(baseURL));
+
+
+            Driver newDriver = driver;
+            //TODO map driver object to json
+            newDriver = objectMapper.dataToJson(newDriver, json);
+            //TODO send driver to server with put
+
+            HttpResponse request = null;
+            request = client.sendData(HttpClient.HTTP_METHOD.PUT);
+        }
+        catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         System.out.println("POST + URL + Driver");
     }
 
@@ -44,7 +64,6 @@ public class DriverServiceDelegate implements DriverServiceInterface {
 
     @Override
     public Driver getByID(String id) {
-        //HttpURLConnection connection = null;
         Driver driver = new Driver();
 
         HttpClient client = null;
@@ -52,14 +71,13 @@ public class DriverServiceDelegate implements DriverServiceInterface {
             client = new HttpClient(new URI(baseURL + "/" + id));
 
         // Basic Authentication
-        client.setCredentials("user1", "password");
+        //client.setCredentials("user1", "password");
         HttpResponse response = null;
             response = client.sendData(HttpClient.HTTP_METHOD.GET);
             System.out.println(response.getData());
             driver = objectMapper.readValue(response.getData(), Driver.class);
 
         }catch (JsonParseException e) {
-
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
