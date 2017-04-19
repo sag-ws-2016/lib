@@ -30,22 +30,22 @@ public class DriverServiceDelegate implements DriverServiceInterface {
 
     //DEFAULT
     public DriverServiceDelegate() {
+
     }
 
     @Override
-    public void create(Driver driver) {
+    public void create(Driver newDriver) {
         HttpClient client = null;
         try {
             client = new HttpClient(new URI(baseURL));
 
+            //map driver object to json
+            String data =  objectMapper.dataToJson(newDriver);
 
-            Driver newDriver = driver;
-            //TODO map driver object to json
-            newDriver = objectMapper.dataToJson(newDriver, json);
-            //TODO send driver to server with put
+            //send driver-data to server with put
+            client.sendData(HttpClient.HTTP_METHOD.PUT, data);
 
-            HttpResponse request = null;
-            request = client.sendData(HttpClient.HTTP_METHOD.PUT);
+            System.out.println("Update driver was successfull");
         }
         catch (JsonParseException e) {
             e.printStackTrace();
@@ -54,12 +54,29 @@ public class DriverServiceDelegate implements DriverServiceInterface {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        System.out.println("POST + URL + Driver");
     }
 
     @Override
     public void update(String id, Driver newDriver) {
-        System.out.println("Update driver an mit der ID: id");
+        HttpClient client = null;
+        try {
+            client = new HttpClient(new URI(baseURL + "/" + id));
+
+            //map driver object to json
+            String data =  objectMapper.dataToJson(newDriver);
+
+            //send driver-data to server with put
+            client.sendData(HttpClient.HTTP_METHOD.PUT, data);
+
+            System.out.println("Create driver was successfull");
+        }
+        catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -69,10 +86,7 @@ public class DriverServiceDelegate implements DriverServiceInterface {
         HttpClient client = null;
         try {
             client = new HttpClient(new URI(baseURL + "/" + id));
-
-        // Basic Authentication
-        //client.setCredentials("user1", "password");
-        HttpResponse response = null;
+            HttpResponse response = null;
             response = client.sendData(HttpClient.HTTP_METHOD.GET);
             System.out.println(response.getData());
             driver = objectMapper.readValue(response.getData(), Driver.class);
