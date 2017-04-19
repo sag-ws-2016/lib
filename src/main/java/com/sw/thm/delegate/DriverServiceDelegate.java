@@ -1,24 +1,34 @@
 package com.sw.thm.delegate;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.sw.thm.model.Driver;
+import com.sw.thm.util.ObjectMapper;
+import net.sf.corn.httpclient.HttpClient;
+import net.sf.corn.httpclient.HttpResponse;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by christophcaps on 11.04.17.
  */
 public class DriverServiceDelegate implements DriverServiceInterface {
 
-    //Konstruktor Default
-    public DriverServiceDelegate() {
-        String connectionInformation = "http://driver-service.thm.de:8944/driver";
+    //TODO: INSTANZ VON DELEGATE UND DANN get aufrufen
+
+    private String baseURL ="http://localhost:4567/driver";
+    private ObjectMapper objectMapper = new ObjectMapper();
+    //Konstruktor mit Connectionstring
+    public DriverServiceDelegate(String targetURL) {
+        baseURL = targetURL;
     }
 
-    //Konstruktor mit Connectionstring
-    //Example für Connectionstring >>>
-    public DriverServiceDelegate(String connectionstring) {
-        String connectionInformation = connectionstring;
+    //DEFAULT
+    public DriverServiceDelegate() {
     }
 
     @Override
@@ -33,11 +43,32 @@ public class DriverServiceDelegate implements DriverServiceInterface {
 
     @Override
     public Driver getByID(String id) {
+        //HttpURLConnection connection = null;
+        Driver driver = new Driver();
+
+        HttpClient client = null;
+        try {
+            client = new HttpClient(new URI(baseURL + "/" + id));
+
+        // Basic Authentication
+        client.setCredentials("user1", "password");
+        HttpResponse response = null;
+            response = client.sendData(HttpClient.HTTP_METHOD.GET);
+            System.out.println(response.getData());
+            driver = objectMapper.readValue(response.getData(), Driver.class);
+
+        }catch (JsonParseException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         System.out.println("Request an Server mit ID");
         System.out.println("get JSON");
         System.out.println("mapped in Object ");
         System.out.println("return driver ");
-        Driver driver = new Driver();
         return driver;
     }
 
@@ -58,4 +89,6 @@ public class DriverServiceDelegate implements DriverServiceInterface {
         System.out.println("Remove address");
         System.out.println("Remove driver");
     }
+
+
 }
