@@ -1,5 +1,7 @@
 package com.sw.thm.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
