@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -77,6 +78,18 @@ public class DriverServiceDelegate implements DriverServiceInterface {
         System.out.println("Get a List of all drivers with Serverrequest");
         System.out.println("Returns a List of all drivers");
         List<Driver> driverList = new ArrayList<Driver>();
+        try {
+            HttpClient client = new HttpClient(new URI( baseURL ));
+            HttpResponse response = client.sendData(HttpClient.HTTP_METHOD.GET);
+            System.out.println(response.getData());
+            driverList = Arrays.asList(objectMapper.readValue(response.getData(), Driver[].class));
+        }catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         return driverList;
     }
 
