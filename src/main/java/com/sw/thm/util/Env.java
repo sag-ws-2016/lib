@@ -30,7 +30,9 @@ public final class Env {
 
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
-                }
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }        
             }
         }
         return configOverrides;
