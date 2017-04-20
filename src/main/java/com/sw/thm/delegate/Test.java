@@ -1,5 +1,6 @@
 package com.sw.thm.delegate;
 
+import com.sw.thm.model.Driver;
 import com.sw.thm.util.ObjectMapper;
 
 /**
@@ -12,6 +13,7 @@ public class Test {
     public static void main(String [] args)
     {
         DriverServiceDelegate driverServiceDelegate = new DriverServiceDelegate();
-        System.out.println(new ObjectMapper().dataToJson(driverServiceDelegate.getByID("3e0bd7c1-93ca-41c0-961d-dad6dd33aa12")));
+        Driver hallo = new Driver();
+        driverServiceDelegate.update("77014d97-ff94-481d-99f4-d57f44b67aea", hallo);
     }
 }
