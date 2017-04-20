@@ -21,8 +21,9 @@ public final class Env {
                     String user = userInfo[0];
                     String password = userInfo[1];
                     String url = "jdbc:" + uri.getScheme() + "://"
-                            + uri.getHost() + ":" + uri.getPort() + uri.getRawPath()
-                            + "?" + uri.getRawQuery();
+                            + uri.getHost() + ":" + uri.getPort() + uri.getRawPath();
+                    if(uri.getRawQuery() != null)
+                        url += "?" + uri.getRawQuery();
                     configOverrides.put("javax.persistence.jdbc.user", user);
                     configOverrides.put("javax.persistence.jdbc.password", password);
                     configOverrides.put("javax.persistence.jdbc.url", url);
