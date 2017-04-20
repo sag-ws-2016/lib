@@ -19,18 +19,16 @@ import java.util.List;
  */
 public class DriverServiceDelegate implements DriverServiceInterface {
 
-    //TODO: INSTANZ VON DELEGATE UND DANN get aufrufen
-
     private String baseURL ="http://localhost:4567/driver";
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    //Defaultkonstruktor
+    public DriverServiceDelegate() {
+    }
+
     //Konstruktor mit Connectionstring
     public DriverServiceDelegate(String targetURL) {
         baseURL = targetURL;
-    }
-
-    //DEFAULT
-    public DriverServiceDelegate() {
-
     }
 
     @Override
@@ -45,7 +43,7 @@ public class DriverServiceDelegate implements DriverServiceInterface {
             //send driver-data to server with put
             client.sendData(HttpClient.HTTP_METHOD.PUT, data);
 
-            System.out.println("Update driver was successfull");
+            System.out.println("Creating driver was successfull");
         }
         catch (JsonParseException e) {
             e.printStackTrace();
@@ -68,7 +66,7 @@ public class DriverServiceDelegate implements DriverServiceInterface {
             //send driver-data to server with put
             client.sendData(HttpClient.HTTP_METHOD.PUT, data);
 
-            System.out.println("Create driver was successfull");
+            System.out.println("Update driver was successfull");
         }
         catch (JsonParseException e) {
             e.printStackTrace();
@@ -87,10 +85,11 @@ public class DriverServiceDelegate implements DriverServiceInterface {
         try {
             client = new HttpClient(new URI(baseURL + "/" + id));
             HttpResponse response = null;
+            //get json data from server
             response = client.sendData(HttpClient.HTTP_METHOD.GET);
             System.out.println(response.getData());
+            //map in object
             driver = objectMapper.readValue(response.getData(), Driver.class);
-
         }catch (JsonParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -98,10 +97,6 @@ public class DriverServiceDelegate implements DriverServiceInterface {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        System.out.println("Request an Server mit ID");
-        System.out.println("get JSON");
-        System.out.println("mapped in Object ");
-        System.out.println("return driver ");
         return driver;
     }
 
@@ -127,13 +122,20 @@ public class DriverServiceDelegate implements DriverServiceInterface {
 
     @Override
     public void delete(String id) {
-        System.out.println("Find DriverDatabaseModel by id");
-
-        System.out.println("if driver at id == null -> throw not found exception");
-
-        System.out.println("Remove address");
-        System.out.println("Remove driver");
+        HttpClient client = null;
+        try {
+            //set client as id
+            client = new HttpClient(new URI(baseURL + "/" + id));
+            //delete driver at id
+            client.sendData(HttpClient.HTTP_METHOD.DELETE);
+            System.out.println("Driver " + id + " deleted");
+        }
+        catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
-
-
 }
