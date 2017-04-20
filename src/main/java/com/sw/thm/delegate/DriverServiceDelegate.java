@@ -33,22 +33,35 @@ public class DriverServiceDelegate implements DriverServiceInterface {
     }
 
     @Override
-    public void create(Driver newDriver) {
+    public Driver create(Driver newDriver) {
+        HttpResponse<Driver> response = null;
 
         try {
-            HttpResponse<JsonNode> response = Unirest.post(baseURL).body(newDriver).asJson();
+            response = Unirest.post(baseURL)
+                    .body(newDriver)
+                    .asObject(Driver.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
+
+        return response.getBody();
+
     }
 
     @Override
-    public void update(String id, Driver newDriver) {
+    public Driver update(String id, Driver newDriver) {
+        HttpResponse<Driver> response = null;
+
         try {
-            HttpResponse<JsonNode> response = Unirest.put(baseURL + "/"+ id).body(newDriver).asJson();
+            response = Unirest.put(baseURL + "/"+ id)
+                    .body(newDriver)
+                    .asObject(Driver.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
+
+        return response.getBody();
+
     }
 
     @Override

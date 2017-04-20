@@ -5,14 +5,15 @@
 package com.sw.thm.delegate;
 
 import com.sw.thm.model.Driver;
+import javassist.NotFoundException;
 
 import java.util.List;
 
 public interface DriverServiceInterface {
-    void create(Driver driver);
-    void update(String id, Driver newDriver);
-    Driver getByID(String id);
+    Driver create(Driver driver) throws NotFoundException;
+    Driver update(String id, Driver newDriver) throws NotFoundException;
+    Driver getByID(String id) throws NotFoundException;
     List<Driver> getAll();
-    void delete (String id);
+    void delete (String id) throws NotFoundException;
 }
 
