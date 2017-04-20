@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/net.sf.corn/corn-httpclient
-    compile group: 'net.sf.corn', name: 'corn-httpclient', version: '1.0.12'
+    //HTTP-Client
+    compile group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.9'
 
     compile "com.fasterxml.jackson.core:jackson-core:2.9.0.pr2"
     compile "com.fasterxml.jackson.core:jackson-databind:2.9.0.pr2"

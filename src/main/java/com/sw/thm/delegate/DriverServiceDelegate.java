@@ -1,15 +1,13 @@
 package com.sw.thm.delegate;
 
-import com.fasterxml.jackson.core.JsonParseException;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import com.sw.thm.model.Driver;
 import com.sw.thm.util.ObjectMapper;
-import net.sf.corn.httpclient.HttpClient;
-import net.sf.corn.httpclient.HttpResponse;
+import com.sw.thm.util.UnirestMapper;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,119 +20,65 @@ public class DriverServiceDelegate implements DriverServiceInterface {
     private String baseURL ="http://localhost:4567/driver";
     private ObjectMapper objectMapper = new ObjectMapper();
 
+
     //Defaultkonstruktor
     public DriverServiceDelegate() {
+        Unirest.setObjectMapper(new UnirestMapper());
     }
 
     //Konstruktor mit Connectionstring
     public DriverServiceDelegate(String targetURL) {
+        Unirest.setObjectMapper(new UnirestMapper());
         baseURL = targetURL;
     }
 
     @Override
     public void create(Driver newDriver) {
-        HttpClient client = null;
+
         try {
-            client = new HttpClient(new URI(baseURL));
-
-            //map driver object to json
-            String data =  objectMapper.dataToJson(newDriver);
-
-            //send driver-data to server with put
-            client.sendData(HttpClient.HTTP_METHOD.PUT, data);
-
-            System.out.println("Creating driver was successfull");
-        }
-        catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+            HttpResponse<JsonNode> response = Unirest.post(baseURL).body(newDriver).asJson();
+        } catch (UnirestException e) {
             e.printStackTrace();
         }
     }
 
     @Override
     public void update(String id, Driver newDriver) {
-        HttpClient client = null;
         try {
-            client = new HttpClient(new URI(baseURL + "/" + id));
-
-            //map driver object to json
-            String data =  objectMapper.dataToJson(newDriver);
-
-            //send driver-data to server with put
-            client.sendData(HttpClient.HTTP_METHOD.PUT, data);
-
-            System.out.println("Update driver was successfull");
-        }
-        catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+            HttpResponse<JsonNode> response = Unirest.put(baseURL + "/"+ id).body(newDriver).asJson();
+        } catch (UnirestException e) {
             e.printStackTrace();
         }
     }
 
     @Override
     public Driver getByID(String id) {
-        Driver driver = new Driver();
-
-        HttpClient client = null;
+        HttpResponse<Driver> response = null;
         try {
-            client = new HttpClient(new URI(baseURL + "/" + id));
-            HttpResponse response = null;
-            //get json data from server
-            response = client.sendData(HttpClient.HTTP_METHOD.GET);
-            System.out.println(response.getData());
-            //map in object
-            driver = objectMapper.readValue(response.getData(), Driver.class);
-        }catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+            response = Unirest.get(baseURL + "/" + id).asObject(Driver.class);
+        } catch (UnirestException e) {
             e.printStackTrace();
         }
-        return driver;
+        return response.getBody();
     }
 
     @Override
     public List<Driver> getAll() {
-        System.out.println("Get a List of all drivers with Serverrequest");
-        System.out.println("Returns a List of all drivers");
-        List<Driver> driverList = new ArrayList<Driver>();
+        HttpResponse<Driver[]> response = null;
         try {
-            HttpClient client = new HttpClient(new URI( baseURL ));
-            HttpResponse response = client.sendData(HttpClient.HTTP_METHOD.GET);
-            System.out.println(response.getData());
-            driverList = Arrays.asList(objectMapper.readValue(response.getData(), Driver[].class));
-        }catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+            response = Unirest.get(baseURL).asObject(Driver[].class);
+        } catch (UnirestException e) {
             e.printStackTrace();
         }
-        return driverList;
+        return Arrays.asList(response.getBody());
     }
 
     @Override
     public void delete(String id) {
-        HttpClient client = null;
+
         try {
-            //set client as id
-            client = new HttpClient(new URI(baseURL + "/" + id));
-            //delete driver at id
-            client.sendData(HttpClient.HTTP_METHOD.DELETE);
-            System.out.println("Driver " + id + " deleted");
-        }
-        catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+            HttpResponse<JsonNode> response = Unirest.delete(baseURL + "/" + id).asJson();
+        } catch (UnirestException e) {
             e.printStackTrace();
         }
     }
