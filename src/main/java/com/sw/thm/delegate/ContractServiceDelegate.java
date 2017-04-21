@@ -5,7 +5,6 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.sw.thm.model.Contract;
-import com.sw.thm.model.PassengerTransportLicense;
 import com.sw.thm.util.UnirestMapper;
 import javassist.NotFoundException;
 
@@ -13,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by christophcaps on 21.04.17.
+ * Created by christophcaps on 01.04.17.
  */
 public class ContractServiceDelegate implements ContractServiceInterface {
 
