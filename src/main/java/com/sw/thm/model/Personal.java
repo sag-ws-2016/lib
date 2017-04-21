@@ -14,6 +14,6 @@ public class Personal extends Person {
         address = driver.getAddress();
         phoneNumber = driver.getPhoneNumber();
         placeOfBirth = driver.getPlaceOfBirth();
-        dateOfBirth = driver.getPlaceOfBirth();
+        dateOfBirth = driver.getDateOfBirth();
     }
 }
