@@ -5,7 +5,6 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.sw.thm.model.Driver;
-import com.sw.thm.util.ObjectMapper;
 import com.sw.thm.util.UnirestMapper;
 
 import java.util.Arrays;
@@ -18,8 +17,6 @@ import java.util.List;
 public class DriverServiceDelegate implements DriverServiceInterface {
 
     private String baseURL ="http://localhost:4567/driver";
-    private ObjectMapper objectMapper = new ObjectMapper();
-
 
     //Defaultkonstruktor
     public DriverServiceDelegate() {
