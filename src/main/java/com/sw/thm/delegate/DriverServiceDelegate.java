@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class DriverServiceDelegate implements DriverServiceInterface {
 
-    private String baseURL ="http://localhost:4567/driver";
+    private String baseURL ="http://driver-service.dev.jonas-faber.me/driver";
 
     //Defaultkonstruktor
     public DriverServiceDelegate() {
