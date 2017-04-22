@@ -8,8 +8,12 @@ import com.sw.thm.util.CleanerStateSerializer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 
+@Entity
+@DiscriminatorValue(value = "Cleaner")
 @Data
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PROTECTED_AND_PUBLIC)
 @NoArgsConstructor
