@@ -15,8 +15,8 @@ public interface CleanerServiceInterface {
     Cleaner getByID(String id) throws NotFoundException;
     List<Cleaner> getAll();
     void delete(String id) throws NotFoundException;
-    Cleaner startWork(String id);
-    Cleaner finishWork(String id);
-    Cleaner restock(String id, int amount);
+    Cleaner startWork(String id)throws NotFoundException;
+    Cleaner finishWork(String id)throws NotFoundException;
+    Cleaner restock(String id, int amount)throws NotFoundException;
 }
 
