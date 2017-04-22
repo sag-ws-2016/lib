@@ -18,7 +18,7 @@ public class Personal extends Person {
     }
 
     public Personal(Cleaner cleaner) {
-        type = "DRIVER";
+        type = "CLEANER";
         id = cleaner.getId();
         firstName = cleaner.getFirstName();
         lastName = cleaner.getLastName();
