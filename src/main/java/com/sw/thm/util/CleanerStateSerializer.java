@@ -15,7 +15,8 @@ public class CleanerStateSerializer extends JsonSerializer<CleanerStateI>
                           SerializerProvider provider)
             throws IOException, JsonProcessingException
     {
-        jgen.writeString(value.getClass().getSimpleName());
+        CleanerStateConverter cleanerStateConverter = new CleanerStateConverter();
+        jgen.writeString(cleanerStateConverter.convertToDatabaseColumn(value));
     }
 
 }
