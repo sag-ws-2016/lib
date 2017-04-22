@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.sw.thm.model.Busy;
 import com.sw.thm.model.CleanerStateI;
 import com.sw.thm.model.Available;
+import com.sw.thm.model.NotAvailable;
 
 import java.io.IOException;
 
@@ -17,6 +18,8 @@ public class CleanerStateDeserializer extends JsonDeserializer<CleanerStateI>
         switch (p.getText()){
             case "Available":
                 return new Available();
+            case "NotAvailable":
+                return new NotAvailable();
             case "Busy":
                 return new Busy();
             default:

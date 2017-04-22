@@ -16,4 +16,15 @@ public class Personal extends Person {
         placeOfBirth = driver.getPlaceOfBirth();
         dateOfBirth = driver.getDateOfBirth();
     }
+
+    public Personal(Cleaner cleaner) {
+        type = "DRIVER";
+        id = cleaner.getId();
+        firstName = cleaner.getFirstName();
+        lastName = cleaner.getLastName();
+        address = cleaner.getAddress();
+        phoneNumber = cleaner.getPhoneNumber();
+        placeOfBirth = cleaner.getPlaceOfBirth();
+        dateOfBirth = cleaner.getDateOfBirth();
+    }
 }

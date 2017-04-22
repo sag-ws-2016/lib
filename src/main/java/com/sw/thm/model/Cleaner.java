@@ -8,13 +8,17 @@ import com.sw.thm.util.CleanerStateSerializer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Embedded;
+
 @Data
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PROTECTED_AND_PUBLIC)
 @NoArgsConstructor
 public class Cleaner extends Person {
     @JsonSerialize(using = CleanerStateSerializer.class)
     @JsonDeserialize(using = CleanerStateDeserializer.class)
+    @Embedded
     protected CleanerStateI cleanerState = new Available();
+
     protected int quota = 0;
 
     public void startWork(){
