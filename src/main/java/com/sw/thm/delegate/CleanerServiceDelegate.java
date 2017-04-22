@@ -4,7 +4,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.sw.thm.model.DrivingLicense;
+import com.sw.thm.model.Cleaner;
 import com.sw.thm.util.UnirestMapper;
 
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by christophcaps on 11.04.17.
  */
-public class CleanerServiceDelegate implements DrivingLicenseServiceInterface {
+public class CleanerServiceDelegate implements CleanerServiceInterface {
 
     private String baseURL ="http://cleaner-service.dev.jonas-faber.me/cleaner";
 
@@ -30,13 +30,13 @@ public class CleanerServiceDelegate implements DrivingLicenseServiceInterface {
     }
 
     @Override
-    public DrivingLicense create(DrivingLicense newLicense) {
-        HttpResponse<DrivingLicense> response = null;
+    public Cleaner create(Cleaner newCleaner) {
+        HttpResponse<Cleaner> response = null;
 
         try {
             response = Unirest.post(baseURL)
-                    .body(newLicense)
-                    .asObject(DrivingLicense.class);
+                    .body(newCleaner)
+                    .asObject(Cleaner.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -46,13 +46,13 @@ public class CleanerServiceDelegate implements DrivingLicenseServiceInterface {
     }
 
     @Override
-    public DrivingLicense update(String id, DrivingLicense newLicense) {
-        HttpResponse<DrivingLicense> response = null;
+    public Cleaner update(String id, Cleaner newCleaner) {
+        HttpResponse<Cleaner> response = null;
 
         try {
             response = Unirest.put(baseURL + "/"+ id)
-                    .body(newLicense)
-                    .asObject(DrivingLicense.class);
+                    .body(newCleaner)
+                    .asObject(Cleaner.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -62,10 +62,10 @@ public class CleanerServiceDelegate implements DrivingLicenseServiceInterface {
     }
 
     @Override
-    public DrivingLicense getByID(String id) {
-        HttpResponse<DrivingLicense> response = null;
+    public Cleaner getByID(String id) {
+        HttpResponse<Cleaner> response = null;
         try {
-            response = Unirest.get(baseURL + "/" + id).asObject(DrivingLicense.class);
+            response = Unirest.get(baseURL + "/" + id).asObject(Cleaner.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -73,10 +73,10 @@ public class CleanerServiceDelegate implements DrivingLicenseServiceInterface {
     }
 
     @Override
-    public List<DrivingLicense> getAll() {
-        HttpResponse<DrivingLicense[]> response = null;
+    public List<Cleaner> getAll() {
+        HttpResponse<Cleaner[]> response = null;
         try {
-            response = Unirest.get(baseURL).asObject(DrivingLicense[].class);
+            response = Unirest.get(baseURL).asObject(Cleaner[].class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -91,5 +91,38 @@ public class CleanerServiceDelegate implements DrivingLicenseServiceInterface {
         } catch (UnirestException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Cleaner startWork(String id) {
+        HttpResponse<Cleaner> response = null;
+        try {
+            response = Unirest.post(baseURL + "/" + id + "/startWork").asObject(Cleaner.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+        return response.getBody();
+    }
+
+    @Override
+    public Cleaner finishWork(String id) {
+        HttpResponse<Cleaner> response = null;
+        try {
+            response = Unirest.post(baseURL + "/" + id + "/finishWork").asObject(Cleaner.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+        return response.getBody();
+    }
+
+    @Override
+    public Cleaner restock(String id, int amount) {
+        HttpResponse<Cleaner> response = null;
+        try {
+            response = Unirest.post(baseURL + "/" + id + "/restock/" + amount).asObject(Cleaner.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+        return response.getBody();
     }
 }
